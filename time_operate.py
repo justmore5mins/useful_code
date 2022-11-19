@@ -13,8 +13,6 @@ class world_time:
         """
         you can get these times:\n
         year,month,day,hour,minute,seconds,microseconds
-
-        all letter must be small type
         """
 
         for i in range(0,get_times):
@@ -38,8 +36,22 @@ class world_time:
             elif returnornot == False:
                 print(i)
     
-    def locationtime(location:str):
+    def locationtime(location:str,get_times:int,delaytime:float):
         """
         because the zones are too much,so if you want to see all zones,
         please you use the funtion getallzones
         """
+        location = pytz.timezone(location)
+        for i in range(0,get_times):
+            nowtime = datetime.now(location)
+            timelist = []
+            get_times += 1
+            timelist.append(nowtime.year)
+            timelist.append(nowtime.month)
+            timelist.append(nowtime.day)
+            timelist.append(nowtime.hour)
+            timelist.append(nowtime.minute)
+            timelist.append(nowtime.second)
+            timelist.append(nowtime.microsecond)
+            return timelist
+        time.sleep(delaytime)
