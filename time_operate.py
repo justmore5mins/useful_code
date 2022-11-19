@@ -30,12 +30,16 @@ class world_time:
             timelist.append(nowtime.microsecond)
             return timelist
         time.sleep(delaytime)
-    def locationtime():
-        """
-            Because of the zones are too many, it can't print
-            all zone in terminal,so use the csv to save it
-        """
-        open("zones.csv","x").close
-        file = open("zones.csv","a")
+    
+    def getallzones(returnornot:bool):
         for i in pytz.all_timezones:
-            pass
+            if returnornot == True:
+                return i
+            elif returnornot == False:
+                print(i)
+    
+    def locationtime(location:str):
+        """
+        because the zones are too much,so if you want to see all zones,
+        please you use the funtion getallzones
+        """
