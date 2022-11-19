@@ -1,7 +1,8 @@
 import hashlib
 import useful_codes
 import aes
-import 
+from Crypto.Protocol.KDF import PBKDF2
+from Crypto.Random import get_random_bytes
 
 class irreversible_encrypt:
     class sha_family:
@@ -41,3 +42,19 @@ class irreversible_encrypt:
             for i in range(0,encodetimes):
                 rawdata = hashlib.md5(rawdata.encode("utf-8")).hexdigest
             return rawdata
+    class aes:
+        def aesencode(rawdata:str,key_length:int,want_to_save:bool):
+            """
+                this is aes encrypt.\n
+                *note:key_length is in byte,but key is in bit
+            """
+            key = get_random_bytes(key_length)
+            generated = PBKDF2(rawdata,key,dkLen=key_length).decode("utf-8")
+            if want_to_save == True:
+                open("key.bin","x").close
+                file = open("key.bin","a")
+                file.write(generated)
+                file.close
+            elif want_to_save == False:
+                pass
+            return generated
