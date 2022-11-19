@@ -41,4 +41,3 @@ class irreversible_encrypt:
             for i in range(0,encodetimes):
                 rawdata = hashlib.md5(rawdata.encode("utf-8")).hexdigest
             return rawdata
-#123
