@@ -12,7 +12,8 @@ class world_time:
     def nowtime(get_times:int,delaytime:float):
         """
         you can get these times:\n
-        year,month,day,hour,minute,seconds,microseconds
+        year,month,day,hour,minute,seconds,microseconds\n
+        (this is your location time)
         """
 
         for i in range(0,get_times):
