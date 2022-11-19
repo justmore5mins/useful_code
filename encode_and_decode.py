@@ -3,6 +3,7 @@ import useful_codes
 import aes
 from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Random import get_random_bytes
+from random import randrange
 
 class irreversible_encrypt:
     class sha_family:
@@ -58,3 +59,7 @@ class irreversible_encrypt:
             elif want_to_save == False:
                 pass
             return generated
+
+class generater:
+    def random(start:int,end:int):
+        return randrange(start=start,start=end)
