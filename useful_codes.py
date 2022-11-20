@@ -5,6 +5,9 @@ from threading import Thread
 
 class basic_operate:
     def loop(loop_times:int,target:object):
+        """
+        if loop times == 0,the target will run infinity times
+        """
         if loop_times != 0 and loop_times > 1:
             for i in loop_times:
                 target
