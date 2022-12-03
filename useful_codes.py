@@ -19,7 +19,10 @@ class basic_operate:
         s = Thread(target=target)
         s.start
         s.join
-
+    def numcounter(start:int,end:int):
+        while start <= end:
+            start += 1
+            return start
         
 class file_operate:
     def check_file_exist(path:str):

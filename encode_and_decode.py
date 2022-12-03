@@ -7,30 +7,35 @@ from random import randrange
 
 class irreversible_encrypt:
     class sha_family:
-        def sha_family_encode_all(want_to_encode:str,vaule:str):
+        def sha_family_encode_all(want_to_encode:str,vaule:str,hash_times:int):
             """
                 it's encode is an irreversible encrypt,but if the same key and vaule, 
                 it can get the same result
 
                 it has sha256,384,224,1 encrypt
             """
-            hash1 = hashlib.sha256(want_to_encode.encode("utf-8"))
-            hash1.update(vaule.encode("utf-8"))
-            hash1 = hash1.hexdigest()
+            i = 0
+
+            while i <= hash_times:
+                hash1 = hashlib.sha256(want_to_encode.encode("utf-8"))
+                hash1.update(vaule.encode("utf-8"))
+                hash1 = hash1.hexdigest()
             
-            hash2 = hashlib.sha384(hash1.encode("utf-8"))
-            hash2.update(vaule.encode("utf-8"))
-            hash2 = hash2.hexdigest()
+                hash2 = hashlib.sha384(hash1.encode("utf-8"))
+                hash2.update(vaule.encode("utf-8"))
+                hash2 = hash2.hexdigest()
                
-            hash3 = hashlib.sha224(hash2.encode("utf-8"))
-            hash3.update(vaule.encode("utf-8"))
-            hash3 = hash3.hexdigest()
+                hash3 = hashlib.sha224(hash2.encode("utf-8"))
+                hash3.update(vaule.encode("utf-8"))
+                hash3 = hash3.hexdigest()
         
-            hash4 = hashlib.sha1(hash3.encode("utf-8"))
-            hash4.update(vaule.encode("utf-8"))
-            hash4 = hash4.hexdigest()
+                hash4 = hashlib.sha1(hash3.encode("utf-8"))
+                hash4.update(vaule.encode("utf-8"))
+                want_to_encode = hash4.hexdigest()
+
+                i += 1
     
-            return hash4
+            return want_to_encode
     class md5:
         def md5encode(rawdata:str,encodetimes:int):
             if encodetimes <= 1:
