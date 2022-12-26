@@ -37,22 +37,32 @@ class world_time:
             elif returnornot == False:
                 print(i)
     
-    def locationtime(location:str,get_times:int,delaytime:float):
+    def getlocaltime(times:list[str],gettime:int,delaytime:int,comma:str):
         """
-        because the zones are too much,so if you want to see all zones,
-        please you use the funtion getallzones
+        it can get your location's time\n
+        datetime.now()s is get how many times time\n
+        and delaytime is delay between get time\n
+        if comma is / it will look like 2002/1/1
         """
-        location = pytz.timezone(location)
-        for i in range(0,get_times):
-            nowtime = datetime.now(location)
-            timelist = []
-            get_times += 1
-            timelist.append(nowtime.year)
-            timelist.append(nowtime.month)
-            timelist.append(nowtime.day)
-            timelist.append(nowtime.hour)
-            timelist.append(nowtime.minute)
-            timelist.append(nowtime.second)
-            timelist.append(nowtime.microsecond)
-            return timelist
-        time.sleep(delaytime)
+        i = 0
+        a = 0
+        returntime = ""
+
+        while i <= gettime:
+            time.sleep(delaytime)
+            while a <= len(times):
+                if "year" in times:
+                    returntime = returntime + str(datetime.now().year()) + comma
+                elif "month" in times:
+                    returntime = returntime + str(datetime.now().month()) + comma
+                elif "day" in times:
+                    returntime = returntime + str(datetime.now().day()) + comma
+                elif "hour" in times:
+                    returntime = returntime + str(datetime.now().hour()) + comma
+                elif "minute" in times:
+                    returntime = returntime + str(datetime.now().minute()) + comma
+                elif "second" in time:
+                    returntime = returntime + str(datetime.now().second()) + comma
+                elif "microsecond" in time:
+                    returntime = returntime + str(datetime.now().microsecond()) + comma
+            return returntime

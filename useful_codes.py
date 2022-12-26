@@ -2,6 +2,9 @@ import time
 from os.path import isfile
 from csv import DictReader
 from threading import Thread
+from datetime import datetime
+
+i = 0
 
 class basic_operate:
     def loop(loop_times:int,target:object):
@@ -23,6 +26,7 @@ class basic_operate:
         while start <= end:
             start += 1
             return start
+
         
 class file_operate:
     def check_file_exist(path:str):

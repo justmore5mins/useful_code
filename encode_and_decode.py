@@ -1,5 +1,4 @@
 import hashlib
-import useful_codes
 import aes
 from Crypto.Protocol.KDF import PBKDF2
 from Crypto.Random import get_random_bytes
